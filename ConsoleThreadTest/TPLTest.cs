@@ -12,17 +12,30 @@ namespace ConsoleThreadTest
     {
         public static void Test()
         {
-            IntMatrixClass matrixA = new IntMatrixClass( 3, 4 );
-            IntMatrixClass matrixB = new IntMatrixClass( 4, 4 );
+            // Две матрицы можно перемножить между собой тогда и только тогда, когда количество столбцов первой матрицы равно количеству строк второй матрицы.
+
+            #region Для проверки правильности результата перемножения матриц
+
+            //IntMatrixClass matrixA = new IntMatrixClass(3, 4);
+            //IntMatrixClass matrixB = new IntMatrixClass(4, 4);
+
+            #endregion
+
+            #region Для проверки самой задачи
+
+            IntMatrixClass matrixA = new IntMatrixClass(100, 100);
+            IntMatrixClass matrixB = new IntMatrixClass(100, 100);
+
+            #endregion
 
             matrixA.SetRandomMatrix(1, 10);
             matrixB.SetRandomMatrix(1, 10);
 
-            IntMatrixClass temp = matrixA.MultiMatrix( matrixB );
-
-            //temp.Show();
-
-            Parallel.Invoke( () => matrixA.MultiMatrix( matrixB ) );
+            Parallel.Invoke( () =>
+            {
+                IntMatrixClass temp = matrixA.MultiMatrix( matrixB );
+                temp.Show();
+            } );
         }
     }
 }

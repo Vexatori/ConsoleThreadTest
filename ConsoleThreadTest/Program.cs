@@ -10,6 +10,11 @@ namespace ConsoleThreadTest
     {
         static void Main( string[] args )
         {
+            //ThreadTest.Test();
+
+            TPLTest.Test();
+
+            Console.ReadLine();
         }
     }
 }
